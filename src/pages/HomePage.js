@@ -50,11 +50,15 @@ function HomePage() {
     getProducts();
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <Container sx={{ display: "flex", minHeight: "100vh", mt: 3 }}>
       <Stack>
-        <FormProvider methods={methods}>
-          <ProductFilter resetFilter={reset} />
+        <FormProvider methods={methods} onSubmit={handleSubmit}>
+          <ProductFilter resetFilter={() => reset(defaultValues)} />
         </FormProvider>
       </Stack>
       <Stack sx={{ flexGrow: 1 }}>
